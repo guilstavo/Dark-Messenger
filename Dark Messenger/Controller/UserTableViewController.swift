@@ -101,8 +101,6 @@ class UserTableViewController: UITableViewController {
                                 (error, reference) in
                                 if error != nil {
                                     print(error!)
-                                } else {
-                                    print("user: \(uid), friend: \(uidToSet)")
                                 }
                             }
                         }
@@ -119,6 +117,9 @@ class UserTableViewController: UITableViewController {
             textField = alertTextField
         }
         alert.addAction(action)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+            print("Cancel button pressed")
+        }))
         present(alert, animated: true, completion: nil)
     }
 
