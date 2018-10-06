@@ -1,0 +1,6 @@
+framework module Pods_Dark_Messenger {
+  umbrella header "Pods-Dark Messenger-umbrella.h"
+
+  export *
+  module * { export * }
+}
