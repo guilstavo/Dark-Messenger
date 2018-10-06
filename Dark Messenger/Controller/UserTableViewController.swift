@@ -82,35 +82,37 @@ class UserTableViewController: UITableViewController {
         var textField = UITextField()
         let alert = UIAlertController(title: "Find Friend", message: "Type friend email", preferredStyle: .alert)
         let action = UIAlertAction(title: "Find Friend", style: .default) { (action) in
-            SVProgressHUD.show()
-            let newFriendEmail = textField.text!.replacingOccurrences(of: ".", with: ",", options: .literal, range: nil)
-            let findFriendDB = Database.database().reference().child("User-Ref").child(newFriendEmail)
-            
-            findFriendDB.observe(.value, with: { (snapshot) -> Void in
-                if snapshot.exists() {
-                    let friendUid = snapshot.value as! String
-                    let uidArray = [self.userUid, friendUid]
-                    let messageKey = Database.database().reference().child("Message").childByAutoId().key
-                    for (index, uid) in uidArray.enumerated() {
-                        let boolIndex = Bool(truncating: index as NSNumber) ? 0 : 1
-                        let uidToSet = uidArray[boolIndex]
-                        let userDB = Database.database().reference().child("Friendship").child(uid).child(uidToSet)
-                        
-                        userDB.setValue(messageKey) {
-                            (error, reference) in
-                            if error != nil {
-                                print(error!)
-                            } else {
-                                print("user: \(uid), friend: \(uidToSet)")
+            if textField.text! != "" {
+                SVProgressHUD.show()
+                let newFriendEmail = textField.text!.replacingOccurrences(of: ".", with: ",", options: .literal, range: nil)
+                let findFriendDB = Database.database().reference().child("User-Ref").child(newFriendEmail)
+
+                findFriendDB.observe(.value, with: { (snapshot) -> Void in
+                    if snapshot.exists() {
+                        let friendUid = snapshot.value as! String
+                        let uidArray = [self.userUid, friendUid]
+                        let messageKey = Database.database().reference().child("Message").childByAutoId().key
+                        for (index, uid) in uidArray.enumerated() {
+                            let boolIndex = Bool(truncating: index as NSNumber) ? 0 : 1
+                            let uidToSet = uidArray[boolIndex]
+                            let userDB = Database.database().reference().child("Friendship").child(uid).child(uidToSet)
+
+                            userDB.setValue(messageKey) {
+                                (error, reference) in
+                                if error != nil {
+                                    print(error!)
+                                } else {
+                                    print("user: \(uid), friend: \(uidToSet)")
+                                }
                             }
                         }
+                        SVProgressHUD.dismiss()
+                    } else {
+                        SVProgressHUD.dismiss()
+                        print("user doesn't exist")
                     }
-                    SVProgressHUD.dismiss()
-                } else {
-                    SVProgressHUD.dismiss()
-                    print("user doesn't exist")
-                }
-            })
+                })
+            }
         }
         alert.addTextField { (alertTextField) in
             alertTextField.placeholder = "email"
