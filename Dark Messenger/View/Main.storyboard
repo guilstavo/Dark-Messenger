@@ -306,7 +306,7 @@
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="19j-F2-ktM">
                                 <rect key="frame" x="16" y="7" width="83" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="LogOut"/>
+                                <state key="normal" title="Log out"/>
                                 <connections>
                                     <action selector="logOutPressed:" destination="4R2-QQ-d7b" eventType="touchUpInside" id="DbE-7h-vQr"/>
                                 </connections>
