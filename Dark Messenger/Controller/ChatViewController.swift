@@ -55,7 +55,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
-        
+        print(messageArray[indexPath.row].messageBody)
         cell.messageBody.text = messageArray[indexPath.row].messageBody
         cell.MessageTime.text = messageArray[indexPath.row].timestamp
         cell.contentView.superview?.clipsToBounds = true
