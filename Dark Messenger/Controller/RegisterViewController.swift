@@ -16,10 +16,19 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
+    @IBOutlet var viewBackground: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         registerButton.layer.cornerRadius = 25
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        viewBackground.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func viewTapped() {
+        emailTextField.endEditing(true)
+        nameTextField.endEditing(true)
+        passwordTextField.endEditing(true)
     }
     
     @IBAction func registerPressed(_ sender: Any) {

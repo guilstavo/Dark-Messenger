@@ -77,7 +77,6 @@ class UserTableViewController: UITableViewController {
             self.tableView.reloadData()
         }
     }
-
     
     @IBAction func addPressed(_ sender: Any) {
         var textField = UITextField()
@@ -120,7 +119,6 @@ class UserTableViewController: UITableViewController {
         alert.addAction(action)
         present(alert, animated: true, completion: nil)
     }
-    
 
     @IBAction func logOutPressed(_ sender: Any) {
         do {
@@ -138,8 +136,6 @@ class UserTableViewController: UITableViewController {
                 UIApplication.shared.keyWindow?.rootViewController = navVC
                 UIApplication.shared.keyWindow?.rootViewController?.navigationController?.popToRootViewController(animated: true)
             }
-            
-            
         } catch {
             print("error, thare was a problem signing out")
         }

@@ -42,11 +42,11 @@
                         <viewControllerLayoutGuide type="bottom" id="GHL-Aa-ISR"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sqt-iT-hUP">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="672"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="0Pk-MK-C1c">
-                                <rect key="frame" x="16" y="216" width="343" height="380"/>
+                                <rect key="frame" x="16" y="146" width="343" height="380"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="IlZ-Do-yaW">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
@@ -175,6 +175,7 @@
                         <outlet property="emailTextField" destination="1cL-fU-zvz" id="sak-Rz-2cb"/>
                         <outlet property="loginButton" destination="Wgc-Xt-FDu" id="btj-td-QIo"/>
                         <outlet property="passwordTextField" destination="OGM-2Q-iLj" id="l1q-Gz-l5m"/>
+                        <outlet property="viewBackground" destination="AeS-Qp-kGx" id="d03-59-ikY"/>
                         <segue destination="4R2-QQ-d7b" kind="push" identifier="goToUserList" id="FMl-p1-x6p"/>
                     </connections>
                 </viewController>
@@ -195,7 +196,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="Ouq-pm-U8W">
-                                <rect key="frame" x="20" y="268.66666666666669" width="335" height="275.00000000000006"/>
+                                <rect key="frame" x="20" y="118" width="335" height="275"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2iH-ah-q71" customClass="inputTextField" customModule="Dark_Messenger" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="335" height="45"/>
@@ -253,7 +254,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Ouq-pm-U8W" firstAttribute="centerY" secondItem="3kq-8h-sYZ" secondAttribute="centerY" id="83a-7Y-Rm9"/>
+                            <constraint firstItem="Ouq-pm-U8W" firstAttribute="top" secondItem="3bk-c5-AXi" secondAttribute="bottom" constant="30" id="2S8-qj-BNq"/>
                             <constraint firstAttribute="trailing" secondItem="Ouq-pm-U8W" secondAttribute="trailing" constant="20" id="Oe8-fC-vC0"/>
                             <constraint firstItem="Ouq-pm-U8W" firstAttribute="leading" secondItem="3kq-8h-sYZ" secondAttribute="leading" constant="20" id="uQL-WS-tbc"/>
                         </constraints>
@@ -267,6 +268,7 @@
                         <outlet property="nameTextField" destination="F0E-rh-ucE" id="VUJ-IN-w9W"/>
                         <outlet property="passwordTextField" destination="bLr-Ey-MPY" id="h42-73-tIR"/>
                         <outlet property="registerButton" destination="epg-wq-wT4" id="8eM-pA-rF1"/>
+                        <outlet property="viewBackground" destination="3kq-8h-sYZ" id="Vep-41-QJl"/>
                         <segue destination="4R2-QQ-d7b" kind="push" identifier="goToUserList" id="JlX-aD-nY6"/>
                     </connections>
                 </viewController>
@@ -318,7 +320,6 @@
                     </navigationItem>
                     <connections>
                         <segue destination="oHc-8i-dol" kind="push" identifier="goToChat" id="ePa-JM-led"/>
-                        <segue destination="V5u-bB-cgl" kind="push" identifier="goToWelcome" id="WQw-PP-Vas"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8IY-hW-qJk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -434,6 +435,5 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="JlX-aD-nY6"/>
-        <segue reference="WQw-PP-Vas"/>
     </inferredMetricsTieBreakers>
 </document>

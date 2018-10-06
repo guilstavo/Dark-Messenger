@@ -16,10 +16,18 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet var viewBackground: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loginButton.layer.cornerRadius = 25
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        viewBackground.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func viewTapped() {
+        emailTextField.endEditing(true)
+        passwordTextField.endEditing(true)
     }
     
     @IBAction func loginPressed(_ sender: Any) {
