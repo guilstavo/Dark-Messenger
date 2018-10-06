@@ -30,10 +30,7 @@ class LoginViewController: UIViewController {
             
             Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if error != nil {
-                    self.emailTextField.isEnabled = true
-                    self.passwordTextField.isEnabled = true
-                    SVProgressHUD.dismiss()
-                    print(error!)
+                    self.showError(error: error!)
                 } else {
                     print("Login was successful")
                     SVProgressHUD.dismiss()
@@ -41,6 +38,13 @@ class LoginViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    func showError(error: Error) {
+        SVProgressHUD.dismiss()
+        handleError(error)
+        emailTextField.isEnabled = true
+        passwordTextField.isEnabled = true
     }
     
 }

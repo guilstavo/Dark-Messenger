@@ -17,13 +17,11 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var registerButton: UIButton!
     
-
     override func viewDidLoad() {
         super.viewDidLoad()
         registerButton.layer.cornerRadius = 25
     }
     
-
     @IBAction func registerPressed(_ sender: Any) {
         if emailTextField.text != "" && passwordTextField.text != "" && nameTextField.text != "" {
             emailTextField.isEnabled = false
@@ -33,9 +31,8 @@ class RegisterViewController: UIViewController {
             
             Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                 if error != nil {
-                    print(error!)
+                    self.showError(error: error!)
                 } else {
-                
                     let userDB = Database.database().reference().child("User")
                     let UserDictionary = [
                         "uid": String(Auth.auth().currentUser!.uid),
@@ -46,23 +43,21 @@ class RegisterViewController: UIViewController {
                     userDB.child(UserDictionary["uid"]!).setValue(UserDictionary) {
                         (error, reference) in
                         if error != nil {
-                            print(error!)
+                            self.showError(error: error!)
                         } else {
-                            
                             let userRefDB = Database.database().reference().child("User-Ref")
                             let emailRef = self.emailTextField.text!.replacingOccurrences(of: ".", with: ",", options: .literal, range: nil)
                             
                             userRefDB.child(emailRef).setValue(String(Auth.auth().currentUser!.uid)) {
                                 (error, reference) in
                                 if error != nil {
-                                    print(error!)
+                                    self.showError(error: error!)
                                 } else {
                                     print("User saved successfully!")
                                 }
                             }
                         }
                     }
-                    
                     self.emailTextField.isEnabled = true
                     self.passwordTextField.isEnabled = true
                     self.nameTextField.isEnabled = true
@@ -73,5 +68,12 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    func showError(error: Error) {
+        SVProgressHUD.dismiss()
+        handleError(error)
+        emailTextField.isEnabled = true
+        passwordTextField.isEnabled = true
+        nameTextField.isEnabled = true
+    }
 }
 
