@@ -14,38 +14,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
-    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         Auth.auth().addStateDidChangeListener { (auth, user) in
-            
-            
-            
-            
-            
-            //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            //
-            //            let mainController = storyboard?.instantiateViewController(withIdentifier: "UserTableViewController") as! UserTableViewController
-            //
-            //
-            //            window?.rootViewController = UINavigationController?.pushViewController(mainController , animated: true)
-            //            window?.makeKeyAndVisible()
-            
-            
-            
-            //            var navigationController : UINavigationController?
-            //            navigationController?.setNavigationBarHidden(true, animated: true)
-            //            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-            //            if (user != nil) {
-            //                let firstVC = storyboard.instantiateViewController(withIdentifier: "UserTableViewController") as! UserTableViewController
-            //                self.window?.rootViewController = navigationController?.pushViewController(firstVC, animated: true)
-            //            } else {
-            //                let firstVC = storyboard.instantiateViewController(withIdentifier: "WelcomeViewController") as! WelcomeViewController
-            //                self.window?.rootViewController = navigationController?.pushViewController(firstVC, animated: true)
-            //            }
+            if (user != nil) {
+                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "UserTableViewController") as? UserTableViewController {
+
+                    let navVC = mainStoryboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
+                    
+                    // set the "root" VC of the NavVC to your SearchResultsTableViewController
+                    navVC.setViewControllers([viewController], animated: false)
+                    
+                    // use the new NavVC as the new rootViewController
+                    UIApplication.shared.keyWindow?.rootViewController = navVC
+                }
+            }
         }
-        
-        
         return true
     }
     

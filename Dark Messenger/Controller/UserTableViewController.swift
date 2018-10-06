@@ -128,7 +128,21 @@ class UserTableViewController: UITableViewController {
     @IBAction func logOutPressed(_ sender: Any) {
         do {
             try Auth.auth().signOut()
-            navigationController?.popToRootViewController(animated: true)
+            
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+            if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
+                
+                let navVC = mainStoryboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
+                
+                // set the "root" VC of the NavVC to your SearchResultsTableViewController
+                navVC.setViewControllers([viewController], animated: false)
+                
+                // use the new NavVC as the new rootViewController
+                UIApplication.shared.keyWindow?.rootViewController = navVC
+                UIApplication.shared.keyWindow?.rootViewController?.navigationController?.popToRootViewController(animated: true)
+            }
+            
+            
         } catch {
             print("error, thare was a problem signing out")
         }
