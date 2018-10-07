@@ -38,6 +38,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tableViewTapped))
         messageTableView.addGestureRecognizer(tapGesture)
         
+        messageTextField.attributedPlaceholder = NSAttributedString(string: "Enter Your Message", attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.5490196078, green: 0.5490196078, blue: 0.5490196078, alpha: 1)])
+        messageTextField.layer.cornerRadius = 15
+        messageTextField.clipsToBounds = true
+        
         messageTableView.separatorStyle = .none
     }
     
@@ -55,22 +59,18 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customMessageCell", for: indexPath) as! CustomMessageCell
-        print(messageArray[indexPath.row].messageBody)
+        
         cell.messageBody.text = messageArray[indexPath.row].messageBody
         cell.MessageTime.text = messageArray[indexPath.row].timestamp
         cell.contentView.superview?.clipsToBounds = true
         cell.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
         
         if messageArray[indexPath.row].sender == Auth.auth().currentUser?.email! {
-            cell.messageBackground.backgroundColor = UIColor.flatSkyBlue()
-            cell.messageBody.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-            cell.MessageTime.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            cell.messageBackground.backgroundColor = #colorLiteral(red: 0.02317308635, green: 0.4005458057, blue: 0.8445877433, alpha: 1)
             cell.rightBackgroundConstraint.constant = 10
             cell.leftBackgroundConstraint.constant = 60
         } else {
-            cell.messageBackground.backgroundColor = UIColor.flatWhite()
-            cell.messageBody.textColor = UIColor.flatBlack()
-            cell.MessageTime.textColor = UIColor.flatBlack()
+            cell.messageBackground.backgroundColor = #colorLiteral(red: 0.3315302134, green: 0.3315826654, blue: 0.3315187693, alpha: 1)
             cell.leftBackgroundConstraint.constant = 10
             cell.rightBackgroundConstraint.constant = 60
         }
