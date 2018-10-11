@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D3D93E33453E2618743380C9 /* Pods_Dark_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D677C83E428E53FEDB9354FC /* Pods_Dark_Messenger.framework */; };
+		E73391A7216FE5A40060DA39 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73391A6216FE5A40060DA39 /* MenuViewController.swift */; };
 		E787B8C82168D4F200A6DA2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E787B8C72168D4F200A6DA2C /* AppDelegate.swift */; };
 		E787B8CF2168D4F400A6DA2C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E787B8CE2168D4F400A6DA2C /* Assets.xcassets */; };
 		E787B8D22168D4F400A6DA2C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E787B8D02168D4F400A6DA2C /* LaunchScreen.storyboard */; };
@@ -29,6 +30,7 @@
 		502EDAEE01F22E92EB214CAD /* Pods-Dark Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dark Messenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dark Messenger/Pods-Dark Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		AB31A60BC26E82DADADCDB18 /* Pods-Dark Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dark Messenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dark Messenger/Pods-Dark Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		D677C83E428E53FEDB9354FC /* Pods_Dark_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dark_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E73391A6216FE5A40060DA39 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		E787B8C42168D4F200A6DA2C /* Dark Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dark Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E787B8C72168D4F200A6DA2C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E787B8CE2168D4F400A6DA2C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				E787B90E2168D78C00A6DA2C /* LoginViewController.swift */,
 				E787B9102168D79D00A6DA2C /* UserTableViewController.swift */,
 				E787B9122168D7A800A6DA2C /* ChatViewController.swift */,
+				E73391A6216FE5A40060DA39 /* MenuViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -230,10 +233,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Dark Messenger/Pods-Dark Messenger-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -241,10 +244,10 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -286,6 +289,7 @@
 				E787B9152168D7B100A6DA2C /* WelcomeViewController.swift in Sources */,
 				E787B9092168D6DE00A6DA2C /* CustomMessageCell.swift in Sources */,
 				E787B9022168D66300A6DA2C /* Message.swift in Sources */,
+				E73391A7216FE5A40060DA39 /* MenuViewController.swift in Sources */,
 				E787B8C82168D4F200A6DA2C /* AppDelegate.swift in Sources */,
 				E787B90D2168D77F00A6DA2C /* RegisterViewController.swift in Sources */,
 				E787B9002168D65A00A6DA2C /* User.swift in Sources */,

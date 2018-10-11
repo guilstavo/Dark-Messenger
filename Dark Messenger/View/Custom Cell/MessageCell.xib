@@ -21,15 +21,15 @@
                         <rect key="frame" x="60" y="10" width="200" height="60.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="751" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ael-H3-UuV">
-                                <rect key="frame" x="15" y="10" width="135" height="40.5"/>
+                                <rect key="frame" x="15" y="10" width="125" height="40.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.99997437000274658" blue="0.99999129772186279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="750" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="khv-tc-S9N">
-                                <rect key="frame" x="150" y="35.5" width="40" height="20"/>
+                                <rect key="frame" x="140" y="35.5" width="50" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="RvJ-YH-4Zp"/>
+                                    <constraint firstAttribute="width" constant="50" id="RvJ-YH-4Zp"/>
                                     <constraint firstAttribute="height" constant="20" id="yRd-W5-zNL"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>

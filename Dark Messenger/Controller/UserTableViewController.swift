@@ -46,21 +46,21 @@ class UserTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! ChatViewController
-        if let indexPath = tableView.indexPathForSelectedRow {
-            destinationVC.selectedFriend = friendsArray[indexPath.row]
+        if segue.identifier == "ChatViewController" {
+            let destinationVC = segue.destination as! ChatViewController
+            if let indexPath = tableView.indexPathForSelectedRow {
+                destinationVC.selectedFriend = friendsArray[indexPath.row]
+            }
         }
     }
     
     func retrieveFriends() {
-        SVProgressHUD.show()
         let messageDB = Database.database().reference().child("Friendship").child(userUid)
         self.friendsArray = []
         messageDB.observe(.childAdded) { (snapshot) in
             let friendUid = snapshot.key
             let chatId = snapshot.value as! String
             self.getUser(uid: friendUid, chatId: chatId)
-            SVProgressHUD.dismiss()
         }
     }
     
@@ -119,34 +119,5 @@ class UserTableViewController: UITableViewController {
         alert.addAction(action)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alert, animated: true, completion: nil)
-    }
-
-    @IBAction func logOutPressed(_ sender: Any) {
-        
-        let logOutAlert = UIAlertController(title: "Are you sure you want to log out?", message: nil, preferredStyle: .actionSheet)
-        let logOutAction = UIAlertAction(title: "Log Out", style: .destructive) { (action) in
-            do {
-                try Auth.auth().signOut()
-                
-                let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                if let viewController = mainStoryboard.instantiateViewController(withIdentifier: "WelcomeViewController") as? WelcomeViewController {
-                    
-                    let navVC = mainStoryboard.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
-                    
-                    // set the "root" VC of the NavVC to your SearchResultsTableViewController
-                    navVC.setViewControllers([viewController], animated: false)
-                    
-                    // use the new NavVC as the new rootViewController
-                    UIApplication.shared.keyWindow?.rootViewController = navVC
-                    UIApplication.shared.keyWindow?.rootViewController?.navigationController?.popToRootViewController(animated: true)
-                }
-            } catch {
-                print("error, thare was a problem signing out")
-            }
-        }
-        
-        logOutAlert.addAction(logOutAction)
-        logOutAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(logOutAlert, animated: true, completion: nil)
     }
 }
